@@ -60,7 +60,7 @@ class MAIN():
 
 
 #asset pista
-background = pygame.image.load('testegame\pista.png')
+background = pygame.image.load('assets\pista.png')
 background_correct_size = pygame.transform.scale(background, (600, 700))
 
 #
@@ -77,7 +77,7 @@ background_yPosition = 0
 background_yPosition2 = screen_height
 
 #asset do carro
-car_asset = pygame.image.load('testegame\y6HviX.png')
+car_asset = pygame.image.load('assets\y6HviX.png')
 escala = 0.05
 width_adjustment = int(car_asset.get_width() * escala)
 height_adjustment = int(car_asset.get_height() * escala)
