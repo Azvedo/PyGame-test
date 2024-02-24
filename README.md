@@ -1,2 +1,2 @@
 # Pygame-test
-Learn pygame library
+Learn pygame library making a car game
