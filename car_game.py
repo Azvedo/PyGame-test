@@ -33,9 +33,8 @@ class OBSTACULO:
         self.draw_obstaculo()
 
     def draw_obstaculo(self):
-        #create a rectangle
         #self.randomize()
-        zombie_rect = assets.zombie_asset.get_rect(center = (0,0))
+        zombie_rect = assets.move_zombie[0].get_rect(center = (0,0))
         screen.blit(assets.zombie_adjust_rotate, self.pos)
 
     def randomize(self):
@@ -60,10 +59,9 @@ class MAIN():
     def update(self):
         self.check_out()
         self.car.direction = 0
-        #self.obst.draw_obstaculo()
         self.obst.move_obstaculo()
         
-    def game_over():
+    def game_over(self):
         pygame.quit()
         sys.exit()
 
