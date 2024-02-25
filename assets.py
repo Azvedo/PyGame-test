@@ -7,9 +7,9 @@ background_correct_size = pygame.transform.scale(background, (600, 700))
 # Asset do carro
 car_asset = pygame.image.load('sprites\Car.png')
 escala = 0.05
-width_adjust = int(car_asset.get_width() * escala)
-height_adjust = int(car_asset.get_height() * escala)
-car_asset_center = pygame.transform.scale(car_asset, (width_adjust, height_adjust))
+car_width_adjust = int(car_asset.get_width() * escala)
+car_height_adjust = int(car_asset.get_height() * escala)
+car_asset_center = pygame.transform.scale(car_asset, (car_width_adjust, car_height_adjust))
 car_to_left = pygame.transform.rotate(car_asset_center,11) #asset de movimento para esquerda
 car_to_right = pygame.transform.rotate(car_asset_center,-11) #asset de movimento para direita
 
@@ -38,3 +38,8 @@ zombie_move_14 = pygame.transform.rotate(pygame.transform.scale(pygame.image.loa
 zombie_move_15 = pygame.transform.rotate(pygame.transform.scale(pygame.image.load('sprites\zombie_movement\skeleton-move_15.png'),(zombie_width_adjust, zombie_height_adjust)),-90)
 zombie_move_16 = pygame.transform.rotate(pygame.transform.scale(pygame.image.load('sprites\zombie_movement\skeleton-move_16.png'),(zombie_width_adjust, zombie_height_adjust)),-90)
 move_zombie= [zombie_move_0,zombie_move_1,zombie_move_2,zombie_move_3,zombie_move_4,zombie_move_5,zombie_move_6,zombie_move_7,zombie_move_8,zombie_move_9,zombie_move_10,zombie_move_11,zombie_move_12,zombie_move_13,zombie_move_14,zombie_move_15,zombie_move_16]
+
+#indices para animação do zombie
+image_index = 0
+image_delay = 5
+image_counter = 0
