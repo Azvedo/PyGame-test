@@ -13,7 +13,7 @@ class CAR:
         self.position = Vector2(self.car_pos_x, self.car_pos_y)
         self.direction = 0 # 0=meio, 1= direita e -1 = esquerda
         self.car_rect = pygame.Rect(self.car_pos_x+5,self.car_pos_y+3, assets.car_width_adjust*0.9,assets.car_height_adjust)
-
+        self.shoot_rect = pygame.Rect(self., )
     def draw_car(self):
         if self.direction == 0:
             screen.blit(assets.car_asset_center,self.position)
@@ -21,18 +21,21 @@ class CAR:
             screen.blit(assets.car_to_right,self.position)
         elif self.direction == -1:
             screen.blit(assets.car_to_left,self.position)
-    #def shoot_car:
+    def bullet_car(self):
+        self.bullet_rec = pygame.Rect()
+        self.bullet_y
+        self.bulelt_x = self.ca
         
-
 class OBSTACULO:
     def __init__(self):
         #create a x and y position
+        self.life = 3
         self.randomize()
-        self.draw_obstaculo()
         self.zombie_rect = pygame.Rect(self.pos.x, self.pos.y, assets.zombie_width_adjust*0.8, assets.zombie_height_adjust*0.5)
-        self.zombie_rect.center = [self.pos.x+35 , self.pos.y+30]
+        
+
     def draw_obstaculo(self):
-    
+        self.zombie_rect.center = [self.pos.x+35 , self.pos.y+30]
         assets.image_counter += 1
         if assets.image_counter >= assets.image_delay:
             assets.image_index = (assets.image_index + 1) % len(assets.move_zombie)
@@ -43,13 +46,13 @@ class OBSTACULO:
 
 
     def randomize(self):
-        self.x = random.randint(125,405)
-        self.y = random.randint(0,450)
+        self.x = random.randint(125, 405)
+        self.y = 5
         self.pos = pygame.math.Vector2(self.x, self.y) #vetor de posições
 
     def move_obstaculo(self):
-        self.pos.y += 4
-        self.zombie_rect.y += 4
+        self.pos.y += 8
+        self.zombie_rect.y += 8
 
 class MAIN():
 
@@ -72,8 +75,20 @@ class MAIN():
     
 
     def check_collision(self):
-       if (self.car.car_rect).colliderect(self.obst.zombie_rect):
-           self.game_over()
+        
+        if (self.car.car_rect).colliderect(self.obst.zombie_rect):
+           colliding = True
+           if colliding:
+                self.obst.life -= 1
+                colliding = False
+
+           print(self.obst.life)
+           if self.obst.life <= 0:
+               colliding = True
+               self.obst.life = 3
+               self.obst.randomize()
+
+           
 
 
 pygame.init()
@@ -116,6 +131,7 @@ while True: # loop game
 
     screen.blit(assets.background_correct_size, (0,0))
     
+
     main_game.draw_elements()
     pygame.display.flip()
     clock.tick(60) # garante que o jogo rode a 60 fps

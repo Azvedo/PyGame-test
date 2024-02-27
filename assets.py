@@ -13,7 +13,7 @@ car_asset_center = pygame.transform.scale(car_asset, (car_width_adjust, car_heig
 car_to_left = pygame.transform.rotate(car_asset_center,11) #asset de movimento para esquerda
 car_to_right = pygame.transform.rotate(car_asset_center,-11) #asset de movimento para direita
 
-# Asset zombie
+# Assets zombie
 zombie_scale = 0.27
 zombie_asset = pygame.image.load('sprites\zombie_movement\skeleton-move_0.png')
 zombie_width_adjust = int(zombie_asset.get_width()* zombie_scale)
