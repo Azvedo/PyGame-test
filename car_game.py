@@ -13,7 +13,9 @@ class CAR:
         self.position = Vector2(self.car_pos_x, self.car_pos_y)
         self.direction = 0 # 0=meio, 1= direita e -1 = esquerda
         self.car_rect = pygame.Rect(self.car_pos_x+5,self.car_pos_y+3, assets.car_width_adjust*0.9,assets.car_height_adjust)
-        self.shoot_rect = pygame.Rect(self., )
+        self.bullet_car()
+        self.bullet_rec = pygame.Rect(self.bullet_pos.x, self.bullet_pos.y, 5 , 10)
+
     def draw_car(self):
         if self.direction == 0:
             screen.blit(assets.car_asset_center,self.position)
@@ -21,10 +23,11 @@ class CAR:
             screen.blit(assets.car_to_right,self.position)
         elif self.direction == -1:
             screen.blit(assets.car_to_left,self.position)
+
     def bullet_car(self):
-        self.bullet_rec = pygame.Rect()
-        self.bullet_y
-        self.bulelt_x = self.ca
+        self.bullet_y = self.car_pos_y
+        self.bullet_x = self.car_pos_x
+        self.bullet_pos = pygame.math.Vector2(self.bullet_x, self.bullet_y)
         
 class OBSTACULO:
     def __init__(self):
@@ -130,7 +133,7 @@ while True: # loop game
         main_game.car.car_rect.y += 5
 
     screen.blit(assets.background_correct_size, (0,0))
-    
+    pygame.draw.rect(screen,'blue', main_game.car.bullet_rec)
 
     main_game.draw_elements()
     pygame.display.flip()
