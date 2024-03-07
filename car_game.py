@@ -13,8 +13,6 @@ class CAR:
         self.position = Vector2(self.car_pos_x, self.car_pos_y)
         self.direction = 0 # 0=meio, 1= direita e -1 = esquerda
         self.car_rect = pygame.Rect(self.car_pos_x+5,self.car_pos_y+3, assets.car_width_adjust*0.9,assets.car_height_adjust)
-        self.bullet_car()
-        self.bullet_rec = pygame.Rect(self.bullet_pos.x, self.bullet_pos.y, 5 , 10)
 
     def draw_car(self):
         if self.direction == 0:
@@ -23,11 +21,6 @@ class CAR:
             screen.blit(assets.car_to_right,self.position)
         elif self.direction == -1:
             screen.blit(assets.car_to_left,self.position)
-
-    def bullet_car(self):
-        self.bullet_y = self.car_pos_y
-        self.bullet_x = self.car_pos_x
-        self.bullet_pos = pygame.math.Vector2(self.bullet_x, self.bullet_y)
         
 class OBSTACULO:
     def __init__(self):
@@ -93,7 +86,6 @@ class MAIN():
 
            
 
-
 pygame.init()
 screen_height = 700
 screen_width = 600
@@ -115,7 +107,7 @@ while True: # loop game
             main_game.game_over() #garante que vai fechar o jogo
         if event.type == SCREEN_UPDATE:
             main_game.update()
-    
+
     press = pygame.key.get_pressed()
     if press[pygame.K_LEFT] and main_game.car.position.x > 130:
         main_game.car.direction = -1
@@ -133,8 +125,7 @@ while True: # loop game
         main_game.car.car_rect.y += 5
 
     screen.blit(assets.background_correct_size, (0,0))
-    pygame.draw.rect(screen,'blue', main_game.car.bullet_rec)
-
+    
     main_game.draw_elements()
     pygame.display.flip()
     clock.tick(60) # garante que o jogo rode a 60 fps
